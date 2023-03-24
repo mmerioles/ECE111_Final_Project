@@ -280,6 +280,32 @@ module decoder
    );
 /* likewise for trelis_memB, C, D
 */
+   mem   trelis_mem_B
+      (
+         .clk,
+         .wr(wr_mem_B),
+         .addr(addr_mem_B),
+         .d_i(d_in_mem_B),
+         .d_o(d_o_mem_B)
+      );
+   
+   mem   trelis_mem_C
+      (
+         .clk,
+         .wr(wr_mem_C),
+         .addr(addr_mem_C),
+         .d_i(d_in_mem_C),
+         .d_o(d_o_mem_C)
+      );
+
+   mem   trelis_mem_D
+      (
+         .clk,
+         .wr(wr_mem_D),
+         .addr(addr_mem_D),
+         .d_i(d_in_mem_D),
+         .d_o(d_o_mem_D)
+      );
 
 //Trace back module operation
 
@@ -369,7 +395,16 @@ module decoder
 
 /* analogous for tbu_1
 */
-
+   tbu tbu_1   (
+      .clk,
+      .rst,
+      .enable(enable_tbu_1),
+      .selection(selection_tbu_1),
+      .d_in_0(d_in_0_tbu_1),
+      .d_in_1(d_in_1_tbu_1),
+      .d_o(d_o_tbu_1),
+      .wr_en(wr_disp_mem_1)
+   );
 //Display Memory modules Instantioation
 
    assign   d_in_disp_mem_0   =  d_o_tbu_0;
@@ -385,6 +420,14 @@ module decoder
    );
 /* analogous for disp_mem_1
 */
+ mem_disp   disp_mem_1
+  (
+      .clk              ,
+      .wr(wr_disp_mem_1),
+      .addr(addr_disp_mem_1),
+      .d_i(d_in_disp_mem_1),
+      .d_o(d_o_disp_mem_1)
+   );
 
 // Display memory module operation
    always @ (posedge clk)
@@ -428,8 +471,6 @@ module decoder
 		d_out <= d_o_disp_mem_0;
 	  end
    end
-/*  d_out = d_o_disp_mem_i 
-    i = mem_bank_buf_buf_buf_buf_buf 
-*/
+
 
 endmodule
