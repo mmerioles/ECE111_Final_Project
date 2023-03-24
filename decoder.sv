@@ -407,7 +407,7 @@ module decoder
       mem_bank_buf_buf_buf_buf_buf <= mem_bank_buf_buf_buf_buf;
    end
 
-   always @ (posedge clk)
+   always @ (posedge clk) begin
       if(mem_bank_buf_buf_buf_buf_buf) begin
 		d_out <= d_o_disp_mem_1;
 	  end else begin
