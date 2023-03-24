@@ -1,8 +1,8 @@
 module bmc010
 (
-   input    [1:0] rx_pair,
-   output   [1:0] path_0_bmc,
-   output   [1:0] path_1_bmc);
+   input    logic[1:0] rx_pair,
+   output   logic[1:0] path_0_bmc,
+   output   logic[1:0] path_1_bmc);
 
 logic    tmp00, tmp01, tmp10, tmp11; 
 

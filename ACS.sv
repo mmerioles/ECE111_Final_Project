@@ -11,8 +11,8 @@ module ACS		                        // add-compare-select
    output logic        valid_o,
    output      [7:0] path_cost);  
 
-   wire  [7:0] path_cost_0;			   // branch metric + path metric
-   wire  [7:0] path_cost_1;
+   logic  [7:0] path_cost_0;			   // branch metric + path metric
+   logic  [7:0] path_cost_1;
 
 /* Fill in the guts per ACS instructions */
 always_comb begin
@@ -22,6 +22,28 @@ always_comb begin
 	end */
 	path_cost_0 <= path_0_pmc + path_0_bmc;
 	path_cost_1 <= path_1_pmc + path_1_bmc;
+
+//	if(path_0_valid && path_1_valid) begin
+//		if(path_cost_0 > path_cost_1) begin
+//			selection <= 1;
+//		end
+//		else begin
+//			selection <= 0;
+//		end
+//	end
+//	else if(!path_0_valid && path_1_valid) begin
+//		selection <= 1;
+//		valid_o <= 1;
+//	end
+//	else if(path_0_valid && !path_1_valid) begin
+//		selection <= 0;
+//		valid_o <= 1;
+//	end
+//	else begin
+//		selection <= 0;
+//		valid_o <= 0;
+//	end
+
 	case({path_0_valid, path_1_valid})
 		00: begin
 			selection <= 0;
@@ -36,11 +58,17 @@ always_comb begin
 			valid_o <= 1;
 			end
 		11: begin
-			valid_o <= 1;
-			if(path_cost_0 > path_cost_1)
+			if(path_cost_0 > path_cost_1) begin
 				selection <= 1;
-			else
+				valid_o <= 1;
+			end else begin
 				selection <= 0;
+				valid_o <= 1;
+				end
+			end
+		default: begin
+			selection <= 0;
+			valid_o <= 0;
 			end
 	endcase
 end
