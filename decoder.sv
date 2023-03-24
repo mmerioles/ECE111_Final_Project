@@ -173,6 +173,7 @@ module decoder
          selection         <= selection_nets;
 
          path_cost[0]      <= ACS000_path_cost;
+         
 /* likewise for 1:7
 */
       end
