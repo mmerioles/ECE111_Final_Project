@@ -1,3 +1,4 @@
+// mem_1x1024
 module mem_disp	   (
    input          clk,
    input          wr,
