@@ -151,13 +151,19 @@ module decoder
       if(!rst)  begin
          validity          <= 8'b00000001;
          selection         <= 8'b00000000;
-         path_cost         <= 8'd0;
+         for(int i = 0; i < 8; i++) begin
+            path_cost[i]      <= 8'd0;
+         end
+         //path_cost         <= 8'd0;
 
       end
       else if(!enable)   begin
          validity          <= 8'b00000001;
          selection         <= 8'b00000000;
-         path_cost         <= 8'd0;
+         for(int i = 0; i < 8; i++) begin
+            path_cost[i]      <= 8'd0;
+         end
+         //path_cost         <= 8'd0;
 
       end
       else if( path_cost[0][7] && path_cost[1][7] && path_cost[2][7] && path_cost[3][7] &&
