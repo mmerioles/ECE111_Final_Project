@@ -408,6 +408,12 @@ module decoder
    end
 
    always @ (posedge clk)
+      if(mem_bank_buf_buf_buf_buf_buf) begin
+		d_out <= d_o_disp_mem_1;
+	  end else begin
+		d_out <= d_o_disp_mem_0;
+	  end
+   end
 /*  d_out = d_o_disp_mem_i 
     i = mem_bank_buf_buf_buf_buf_buf 
 */
