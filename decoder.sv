@@ -200,7 +200,7 @@ module decoder
 
    always @ (posedge clk, negedge rst) begin
       if(!rst)
-         rd_mem_counter <= // -1   how do you handle this in 10 bit binary?
+         rd_mem_counter <= 10'b1111111111 // -1   how do you handle this in 10 bit binary?
       else if(enable)
          rd_mem_counter <= rd_mem_counter - 10'd1;
    end
