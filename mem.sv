@@ -1,3 +1,4 @@
+// mem_8x1024
 module mem					(
    input                  clk,
    input                  wr,
