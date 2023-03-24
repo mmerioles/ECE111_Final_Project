@@ -11,8 +11,10 @@ module ACS		                        // add-compare-select
    output logic        valid_o,
    output      [7:0] path_cost);  
 
+
    logic  [7:0] path_cost_0;			   // branch metric + path metric
    logic  [7:0] path_cost_1;
+
 
 /* Fill in the guts per ACS instructions */
 always_comb begin
