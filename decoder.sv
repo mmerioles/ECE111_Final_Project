@@ -233,6 +233,8 @@ module decoder
 
             wr_mem_A          <= 1'b0;
             wr_mem_B          <= 1'b1;
+            wr_mem_C          <= 1'b0;
+            wr_mem_D          <= 1'b0;
 /* other wr_mems = 0
 */	        
          end		       
@@ -243,6 +245,10 @@ module decoder
             addr_mem_D        <= rd_mem_counter;
 
             wr_mem_C       <= 1'b1;
+            wr_mem_A       <= 1'b0;
+            wr_mem_B       <= 1'b0;
+            wr_mem_D       <= 1'b0;
+
 /* other wr_mems = 0
 */	        
          end
@@ -253,6 +259,9 @@ module decoder
             addr_mem_D        <= wr_mem_counter;
 
             wr_mem_D       <= 1'b1;
+            wr_mem_C       <= 1'b1;
+            wr_mem_A       <= 1'b0;
+            wr_mem_B       <= 1'b0;
 /* other wr_mems = 0
 */	        
          end		       
