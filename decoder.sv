@@ -187,9 +187,15 @@ module decoder
       else   begin
          validity          <= validity_nets;
          selection         <= selection_nets;
-
+// matt 2 branch
          path_cost[0]      <= ACS000_path_cost;
-         
+         path_cost[1]      <= ACS001_path_cost;
+         path_cost[2]      <= ACS010_path_cost;
+         path_cost[3]      <= ACS011_path_cost;
+         path_cost[4]      <= ACS100_path_cost;
+         path_cost[5]      <= ACS101_path_cost;
+         path_cost[6]      <= ACS110_path_cost;
+         path_cost[7]      <= ACS111_path_cost;
 /* likewise for 1:7
 */
       end
