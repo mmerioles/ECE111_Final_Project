@@ -231,6 +231,7 @@ module decoder
             addr_mem_C        <= rd_mem_counter;
             addr_mem_D        <= 10'd0;
 
+            wr_mem_A          <= 1'b0;
             wr_mem_B          <= 1'b1;
 /* other wr_mems = 0
 */	        
