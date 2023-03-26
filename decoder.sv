@@ -6,7 +6,7 @@ module decoder
    input [1:0]       d_in,
    output logic      d_out);
 
-//   logic             decoder_o_reg;
+   logic             [9:0] decoder_o_reg;
 		
 //bmc module signals
    wire  [1:0]       bmc000_path_0_bmc;
@@ -187,7 +187,7 @@ module decoder
       else   begin
          validity          <= validity_nets;
          selection         <= selection_nets;
-// matt 2 branch
+
          path_cost[0]      <= ACS000_path_cost;
          path_cost[1]      <= ACS001_path_cost;
          path_cost[2]      <= ACS010_path_cost;
@@ -271,23 +271,13 @@ module decoder
             wr_mem_D       <= 1'b0;
 
 /* other wr_mems = 0
-*/	        
-            wr_mem_A          <= 1'b0;
-            wr_mem_B          <= 1'b0;
-            wr_mem_C          <= 1'b1;
-            wr_mem_D          <= 1'b0;
-        
+*/	  
          end
          2'b11:     begin
             addr_mem_A        <= rd_mem_counter;
             addr_mem_B        <= 10'd0;
             addr_mem_C        <= rd_mem_counter;
-            addr_mem_D        <= wr_mem_counter;
-
-            wr_mem_D       <= 1'b1;
-            wr_mem_C       <= 1'b1;
-            wr_mem_A       <= 1'b0;
-            wr_mem_B       <= 1'b0;
+            addr_mem_D        <= wr_mem_counter;   
 /* other wr_mems = 0
 */	        
             wr_mem_A          <= 1'b0;
