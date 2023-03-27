@@ -14,7 +14,7 @@ module tbu
    
    logic   [2:0] pstate;
    logic   [2:0] nstate;
-
+	logic 		n;
    logic         selection_buf;
 
    always @(posedge clk)    begin
@@ -39,13 +39,23 @@ from selection, d_in_1[pstate], d_in_0[pstate]
 See assignment text for details
 */
 	always_comb begin
+		if(!pstate[2]) 
+			n = pstate[0];
+		else
+			n = !pstate[0];
+		if(d_in_0[pstate]==1 | d_in_1[pstate] ==1) begin
+			nstate <= {pstate[1], pstate[0], !n};
+
+		end else begin
+			nstate <= {pstate[1], pstate[0], n};
+		end
+		
 		if(selection) begin
-			nstate <= {pstate[1], pstate[0], pstate[2] ^ pstate[0] ^ d_in_1[pstate]};
 			d_o_reg <= d_in_1[pstate];
 		end else begin
-			nstate <= {pstate[1], pstate[0], pstate[2] ^ pstate[0] ^ d_in_0[pstate]};
 			d_o_reg <= 0;
 		end
+		 
 		wr_en_reg <= selection;
 	end
 

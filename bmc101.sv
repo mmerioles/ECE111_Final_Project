@@ -12,10 +12,10 @@ always_comb begin
    tmp10 = !tmp00;
    tmp11 = !tmp01;
 
-   path_0_bmc[1] = tmp00 & !tmp01;
+   path_0_bmc[1] = tmp00 & tmp01;
    path_0_bmc[0] = tmp00 ^ tmp01;
    
-   path_1_bmc[1] = tmp10 & !tmp11;
+   path_1_bmc[1] = tmp10 & tmp11;
    path_1_bmc[0] = tmp10 ^ tmp11;
    
    end
